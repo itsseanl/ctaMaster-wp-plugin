@@ -1,0 +1,120 @@
+/* #wpbody,
+#wpcontent {
+} */
+#wpbody {
+	display: flex;
+}
+.body {
+	background: #ebebeb;
+}
+#wpbody-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.view {
+	width: 100%;
+	height: auto;
+	display: flex;
+	flex-direction: Column;
+}
+.header {
+	background: #ebebeb;
+	padding: 15px;
+}
+
+.controls {
+	display: flex;
+	padding: 15px;
+	background: #217297;
+}
+
+.btn {
+	z-index: 99;
+	background: #333;
+	color: #fff;
+	position: relative;
+	padding: 15px;
+	margin: 5px;
+	cursor: pointer;
+}
+
+#preview {
+	width: 100%;
+}
+#banner-wrap {
+	width: 90%;
+	height: 150px;
+	border: 2px solid #333;
+	display: block;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+#banner {
+	width: 100%;
+	height: auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	background-color: #217297;
+}
+#banner > p {
+	font-size: 18px;
+	color: #fff;
+}
+#banner > .btn {
+	margin-left: 5%;
+}
+#banner > .btn {
+	text-decoration: none;
+}
+
+#add-banner {
+	display: flex;
+	flex-wrap: wrap;
+	opacity: 0;
+	height: 0;
+	transition: 0.3s all;
+}
+#add-banner > form {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+.form-section {
+	margin: 15px auto;
+}
+
+#add-banner > form > label {
+	display: flex;
+	flex-direction: column;
+	margin: 5px 0px;
+	width: 300px;
+}
+#add-banner > form > label > input,
+#add-banner > form > label > select {
+	margin: 15px 0;
+}
+
+#add-banner > form > input[type="color"] {
+	width: 50px;
+}
+
+.active {
+	opacity: 1 !important;
+	height: auto !important;
+}
+.add-banner > input,
+.add-popup > input {
+	width: 300px;
+	margin: 15px 0;
+}
+input[type="color"] {
+	width: 50px;
+}
+
+input[type="submit"] {
+	width: 300px;
+}
