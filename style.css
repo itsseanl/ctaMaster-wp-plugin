@@ -71,50 +71,48 @@
 	text-decoration: none;
 }
 
-#add-banner {
-	display: flex;
-	flex-wrap: wrap;
-	opacity: 0;
-	height: 0;
-	transition: 0.3s all;
+.add-form {
+	padding: 15px;
 }
-#add-banner > form {
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-}
+
 .form-section {
+	display: flex;
+	width: 100%;
 	margin: 15px auto;
+	justify-content: space-around;
+	align-items: center;
 }
-
-#add-banner > form > label {
+.form-section > label {
 	display: flex;
 	flex-direction: column;
-	margin: 5px 0px;
-	width: 300px;
-}
-#add-banner > form > label > input,
-#add-banner > form > label > select {
-	margin: 15px 0;
-}
-
-#add-banner > form > input[type="color"] {
-	width: 50px;
+	flex: 1 0 auto;
+	margin: 5px;
 }
 
 .active {
 	opacity: 1 !important;
 	height: auto !important;
 }
-.add-banner > input,
-.add-popup > input {
-	width: 300px;
-	margin: 15px 0;
+
+.form-section > label > input[type="text"],
+.form-section > label > select {
+	background: #fff;
+	box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
+	border: none;
+	border-radius: 0px;
+	width: 100%;
 }
-input[type="color"] {
-	width: 50px;
+.form-section > label > select {
+	border: 1px solid #333;
 }
 
-input[type="submit"] {
-	width: 300px;
+@media (max-width: 767px) {
+	.form-section {
+		flex-direction: column;
+	}
+	.form-section > label {
+		text-align: center;
+		justify-content: center;
+		align-items: center;
+	}
 }

@@ -3,6 +3,9 @@
 
 function view(){
 ?>
+<script src="https://cdn.jsdelivr.net/npm/spectrum-colorpicker2@2.0.0/dist/spectrum.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/spectrum-colorpicker2@2.0.0/dist/spectrum.min.css">
+
 <p style="display:none" id="pluginSrc"><?php echo plugins_url() . '/ctaMaster/writeToScript.php'; ?></p>
 <div class="view">
     <div class="header">
@@ -31,6 +34,18 @@ function view(){
             <h2>New Banner:</h3>
             <form class="add-form" method="post" action="">
                 <div class="text-inputs form-section">
+                <label for="pagedisplay">Select which page(s) to display Banner on
+                    <select id="pages" name="pagedisplay" onchange="updateBanner(this)"> 
+                        <option value="all">All Pages</option>
+                    <?php
+                                if( $pages = get_pages() ){
+                                    foreach( $pages as $page ){
+                                        echo '<option value="' . $page->ID . '" ' . selected( $page->ID, $options['page_id'] ) . '>' . $page->post_title . '</option>';
+                                    }
+                                }
+                                ?>
+                    </select>
+                    </label>
                     <label for="banner-text">Banner Text
                     <input id="banner-text" type="text" onkeyup="updateBanner(this)" placeholder="Banner text" name="banner-text" required></input>
                     </label>
@@ -56,24 +71,26 @@ function view(){
                     </label>
                 </div>
                 <div class="form-section">
-                    <label for="pagedisplay">Select which page(s) to display Banner on
-                    <select id="pages" name="pagedisplay" onchange="updateBanner(this)"> 
-                        <option value="all">All Pages</option>
-                    <?php
-                                if( $pages = get_pages() ){
-                                    foreach( $pages as $page ){
-                                        echo '<option value="' . $page->ID . '" ' . selected( $page->ID, $options['page_id'] ) . '>' . $page->post_title . '</option>';
-                                    }
-                                }
-                                ?>
-                    </select>
-                    </label>
+                  
                     <input type="button" value="Create Banner" onclick="submitForm(event)"></input>
                 </div>
             </form>
         </div>
     </div>
 </div>
-
+<script type="text/javascript">
+jQuery("#bg-color").spectrum({
+        color: "#f00"
+    });
+    jQuery("#btn-color").spectrum({
+        color: "#f00"
+    });
+    jQuery("#banner-text-color").spectrum({
+        color: "#f00"
+    });
+    jQuery("#btn-text-color").spectrum({
+        color: "#f00"
+    });
+</script>
 <?php
 }
