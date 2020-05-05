@@ -17,6 +17,7 @@ var buttonLink;
 var btnLink;
 var btnColor;
 var btnTextColor;
+var pagesDisplayed;
 
 function updateBanner(elem) {
 	if (elem.id == "banner-text") {
@@ -47,6 +48,9 @@ function updateBanner(elem) {
 		previewText.style.color = elem.value;
 		bannerTextColor = elem.value;
 	}
+	if (elem.id == "pages") {
+		pagesDisplayed = elem.value;
+	}
 }
 
 function submitForm(e) {
@@ -67,6 +71,7 @@ function submitForm(e) {
 					bannerColor: bannerColor,
 					btnColor: btnColor,
 					btnTextColor: btnTextColor,
+					pagesDisplayed: pagesDisplayed,
 				},
 			})
 			.done(function (data) {

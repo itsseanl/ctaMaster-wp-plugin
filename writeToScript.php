@@ -1,6 +1,5 @@
 <?php 
 header('Content-Type: application/json');
-$bannerScript = fopen("banner.js", "w") or die('{"status": "unable to open file!"}');
 $bannerText= $_POST['bannerText'];
 $bannerTextColor = $_POST['bannerTextColor'];
 $btnLink = $_POST['btnLink'];
@@ -25,8 +24,29 @@ function addElement() {
 	document.body.insertBefore(banner, document.body.firstChild);
 }
 ';
+$bannerScript = fopen("banner.js", "w") or die('{"status": "unable to write banner.js!"}');
 fwrite($bannerScript, $script);
 fclose($bannerScript);
 
+$pagesDisplayed = $_POST['pagesDisplayed'];
+$theDisplay = $pagesDisplayed;
+if ($pagesDisplayed == "all"){
+	$theDisplay = "";
+}
+
+$controllerScript = fopen("controller.php", "w") or die('{"status": unable to write controller.php!"}');
+$script = '
+<?php
+if (is_page(' . $theDisplay . ')){
+	add_action( "wp_footer", "ctaBannerScript" );
+
+	function ctaBannerScript() {
+		wp_enqueue_script( "script", plugins_url( "/banner.js" , __FILE__ ) );
+	}
+
+}';
+
+fwrite($controllerScript, $script);
+fclose($controllerScript);
 echo '{"status":"ok"}';
 

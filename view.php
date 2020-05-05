@@ -57,7 +57,7 @@ function view(){
                 </div>
                 <div class="form-section">
                     <label for="pagedisplay">Select which page(s) to display Banner on
-                    <select id="pages" name="pagedisplay"> 
+                    <select id="pages" name="pagedisplay" onchange="updateBanner(this)"> 
                         <option value="all">All Pages</option>
                     <?php
                                 if( $pages = get_pages() ){
