@@ -29,11 +29,12 @@ function ctaMaster_plugin_setup_menu(){
 }
 function ctaMaster_init(){
     if (is_admin()){
-
     wp_enqueue_style( 'style1', plugins_url( '/style.css' , __FILE__ ) );
     wp_enqueue_script( 'script', plugins_url( '/maincontrol.js' , __FILE__ ) );
+    include ('enable.php');
+    echo $enable;
     include ('view.php');
-    view();
+    view($enable);
 
     }
 

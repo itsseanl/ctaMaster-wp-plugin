@@ -1,6 +1,6 @@
 
 <?php
-if (is_page(5)){
+if (is_front_page() || is_page()){
 	add_action( "wp_footer", "ctaBannerScript" );
 
 	function ctaBannerScript() {

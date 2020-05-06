@@ -4,12 +4,6 @@ var addPopUp = document.getElementById("addPopUp");
 var previewText = document.getElementById("preview-text");
 var previewBtn = document.getElementById("preview-btn");
 var previewBanner = document.getElementById("banner");
-addBanner.addEventListener("click", newBanner);
-
-function newBanner() {
-	var addBanner = document.getElementById("add-banner");
-	addBanner.classList.add("active");
-}
 var bannerText;
 var bannerColor;
 var bannerTextColor;
@@ -18,6 +12,13 @@ var btnLink;
 var btnColor;
 var btnTextColor;
 var pagesDisplayed;
+
+addBanner.addEventListener("click", newBanner);
+
+function newBanner() {
+	var addBanner = document.getElementById("add-banner");
+	addBanner.classList.add("active");
+}
 
 function updateBanner(elem) {
 	if (elem.id == "banner-text") {
@@ -53,14 +54,37 @@ function updateBanner(elem) {
 	}
 }
 
-function submitForm(e) {
-	e.preventDefault();
+function disable(elem) {
+	var enabled;
+	if (elem.checked == true) {
+		enabled = false;
+	} else {
+		enabled = true;
+	}
 	var src = document.getElementById("pluginSrc");
-	console.log(src.innerHTML);
+
 	jQuery(document).ready(function () {
 		jQuery
 			.ajax({
-				url: `${src.innerHTML}`,
+				url: `${src.innerHTML}writeToEnable.php`,
+				type: "POST",
+				dataType: "html",
+				data: { enable: enabled },
+			})
+			.done(function (data) {
+				alert(data);
+			});
+	});
+}
+
+function submitForm(e) {
+	e.preventDefault();
+	jQuery(document).ready(function () {
+		var src = document.getElementById("pluginSrc");
+
+		jQuery
+			.ajax({
+				url: `${src.innerHTML}writeToScript.php`,
 				type: "POST",
 				dataType: "html",
 				data: {

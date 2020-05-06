@@ -2,7 +2,7 @@
 
 Simplify your calls to action
 
-ctaMaster aims to provide easy to implement banners, modals, and more to your WordPress website. Currently banner functionality is implemented, with new features coming soon!
+ctaMaster aims to provide easy to implement banners to your WordPress Website. Display your banner on a specific page, or on all of them. modal pop-ups and more are coming soon!
 
 This plugin makes use of Spectrum, a JS color picker:
 

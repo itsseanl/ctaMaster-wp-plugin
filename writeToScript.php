@@ -29,15 +29,15 @@ fwrite($bannerScript, $script);
 fclose($bannerScript);
 
 $pagesDisplayed = $_POST['pagesDisplayed'];
-$theDisplay = $pagesDisplayed;
+$theDisplay = 'is_page('.$pagesDisplayed.')';
 if ($pagesDisplayed == "all"){
-	$theDisplay = "";
+	$theDisplay = "is_page() || is_front_page()";
 }
 
 $controllerScript = fopen("controller.php", "w") or die('{"status": unable to write controller.php!"}');
 $script = '
 <?php
-if (is_page(' . $theDisplay . ')){
+if (' . $theDisplay . '){
 	add_action( "wp_footer", "ctaBannerScript" );
 
 	function ctaBannerScript() {
@@ -48,5 +48,5 @@ if (is_page(' . $theDisplay . ')){
 
 fwrite($controllerScript, $script);
 fclose($controllerScript);
-echo '{"status":"ok"}';
+echo '{"status":"Banner Created"}';
 

@@ -1,26 +1,44 @@
 <?php
 
-
-function view(){
+function view($enable){
+    if ($enable == 1){
+        $enable = 'checked';
+    }
+    else{
+        $enable = '';
+    }
 ?>
 <script src="https://cdn.jsdelivr.net/npm/spectrum-colorpicker2@2.0.0/dist/spectrum.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/spectrum-colorpicker2@2.0.0/dist/spectrum.min.css">
 
-<p style="display:none" id="pluginSrc"><?php echo plugins_url() . '/ctaMaster/writeToScript.php'; ?></p>
+<p style="display:none" id="pluginSrc"><?php echo plugins_url() . '/ctaMaster/'; ?></p>
 <div class="view">
     <div class="header">
         <h1>ctaMaster</h1>
-        <p>Easily add banners, pop-ups, and other Calls to Action</p>
+        <p>ctaMaster aims to provide easy to implement banners to your WordPress Website. Display your banner on a specific page, or on all of them. modal pop-ups and more are coming soon!</p>
     </div>
     <div class="body">
         <div class="controls">
             <div class="btn" id="addBanner">
                 Create Banner    
             </div>
-            <div class="btn" id="addPopUp">
+            <!-- <div class="btn" id="addPopUp">
                 Create Popup    
-            </div>
+            </div> -->
+           
         </div>
+        <?php 
+        if (file_exists(plugin_dir_path('/banner.js'))){ ?>
+        <div class="disable">
+            <p>Disable Banner</p>
+            <label class="switch">
+                <input type="checkbox" id="disable" onchange="disable(this)" <?php echo $enable; ?>>
+                <span class="slider round"></span>
+            </label>
+        </div>
+        <?php
+        }
+        ?>
         <div id="preview">
             <h2>Preview:</h2>
             <div id="banner-wrap">
